@@ -9,6 +9,7 @@ const basicFetch = async (endpoint) => {
 }
 
 export default {
+    
     getHomeList: async () => {
         return [
             {
@@ -34,23 +35,25 @@ export default {
             {
                 slug: 'comedy',
                 title: 'Comédia',
-                items: basicFetch(`/discover/movie?with_genres=35&language=pt-BR&api_key=${API_KEY}`)
+                items: await basicFetch(`/discover/movie?with_genres=35&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'horror',
                 title: 'Terror',
-                items: basicFetch(`/discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`)
+                items: await basicFetch(`/discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'romance',
                 title: 'Romance',
-                items: basicFetch(`/discover/movie?with_genres=10749&language=pt-BR&api_key=${API_KEY}`)
+                items: await basicFetch(`/discover/movie?with_genres=10749&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'documentary',
                 title: 'Documentario',
-                items: basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
+                items: await basicFetch(`/discover/movie?with_genres=99&language=pt-BR&api_key=${API_KEY}`)
             },
         ];
     }
+
+    
 }
