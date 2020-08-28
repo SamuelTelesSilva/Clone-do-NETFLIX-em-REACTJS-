@@ -60,6 +60,11 @@ export default () => {
           <MovieRow key={key} title={item.title} items={item.items}/>
         ))}
       </section>
+
+      <footer>
+        B7Web
+      </footer>
+
     </div>
   );
 }
