@@ -3,11 +3,13 @@ import Tmdb from './Tmdb';
 import './App.css';
 import MovieRow from './components/MovieRow';
 import FeaturedMovie from './components/FeaturedMovie';
+import Header from './components/Header';
 
 export default () => {
 
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false);
 
   useEffect(()=>{
     const loadAll = async () => {
@@ -27,8 +29,27 @@ export default () => {
 
   }, []);
 
+  //adicionando a navbar, quando usar o  scroll ela fica preta
+  useEffect(()=>{
+    const scrollListener = () => {
+      if(window.scrollY > 10){
+        setBlackHeader(true);
+      }else{
+        setBlackHeader(false);
+      }
+
+    }
+
+    window.addEventListener('scroll', scrollListener);
+    return() => {//removendo quando sair da pagina
+      window.removeEventListener('scroll', scrollListener);
+    }
+  }, []);
+
   return(
     <div className="page">
+
+      <Header black={blackHeader}/>
       
       {featuredData &&
         <FeaturedMovie item={featuredData} />
